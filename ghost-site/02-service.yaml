@@ -12,9 +12,6 @@ metadata:
   name: drivetester
   namespace: drivetester
 spec:
-  clusterIP: 172.30.59.103
-  clusterIPs:
-  - 172.30.59.103
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
