@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: drivetester
+    app.kubernetes.io/component: drivetester
+    app.kubernetes.io/instance: drivetester
+    app.kubernetes.io/name: drivetester
+    app.kubernetes.io/part-of: drivetester
+    app.openshift.io/runtime-version: latest
+  name: drivetester
+  namespace: drivetester
+spec:
+  clusterIP: 172.30.59.103
+  clusterIPs:
+  - 172.30.59.103
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 2368-tcp
+    port: 2368
+    protocol: TCP
+    targetPort: 2368
+  selector:
+    app: drivetester
+    deploymentconfig: drivetester
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
