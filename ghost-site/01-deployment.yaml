@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: drivetester
+    app.kubernetes.io/component: drivetester
+    app.kubernetes.io/instance: drivetester
+    app.kubernetes.io/name: drivetester
+    app.kubernetes.io/part-of: drivetester
+    app.openshift.io/runtime-namespace: drivetester
+  name: drivetester
+  namespace: drivetester
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: drivetester
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+      creationTimestamp: null
+      labels:
+        app: drivetester
+        deploymentconfig: drivetester
+    spec:
+      containers:
+      - env:
+        - name: url
+          value: https://drivetester.us
+        image: ghost@sha256:b76e17a04c89d501f391c9f9b83ec645ed9b0423ddf0a9999085f16d88ffc8cd
+        imagePullPolicy: Always
+        name: drivetester
+        ports:
+        - containerPort: 2368
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: drivetester
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: drivetester
+        persistentVolumeClaim:
+          claimName: drivetester
