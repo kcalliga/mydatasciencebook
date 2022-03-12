@@ -6,5 +6,3 @@ resources:
   - 00-namespace.yaml
   - 01-deployment.yaml
   - 02-service.yaml
-  - 03-drivetester-route.yaml
-  - 04-www-drivetester-route.yaml
