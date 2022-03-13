@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: drivetester
-    app.kubernetes.io/component: drivetester
-    app.kubernetes.io/instance: drivetester
-    app.kubernetes.io/name: drivetester
-    app.kubernetes.io/part-of: drivetester
-    app.openshift.io/runtime-namespace: drivetester
-  name: drivetester
-  namespace: drivetester
+    app: myopenshiftblog
+    app.kubernetes.io/component: myopenshiftblog
+    app.kubernetes.io/instance: myopenshiftblog
+    app.kubernetes.io/name: myopenshiftblog
+    app.kubernetes.io/part-of: myopenshiftblog
+    app.openshift.io/runtime-namespace: myopenshiftblog
+  name: myopenshiftblog
+  namespace: myopenshiftblog
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: drivetester
+      app: myopenshiftblog
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -28,13 +28,13 @@ spec:
         openshift.io/generated-by: OpenShiftWebConsole
       creationTimestamp: null
       labels:
-        app: drivetester
-        deploymentconfig: drivetester
+        app: myopenshiftblog
+        deploymentconfig: myopenshiftblog
     spec:
       containers:
       - env:
         - name: url
-          value: https://drivetester.us
+          value: https://myopenshiftblog.com
         image: ghost@sha256:b76e17a04c89d501f391c9f9b83ec645ed9b0423ddf0a9999085f16d88ffc8cd
         imagePullPolicy: Always
         name: drivetester
@@ -46,13 +46,13 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /var/lib/ghost/content
-          name: drivetester
+          name: myopenshiftblog
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: drivetester
+      - name: myopenshiftblog
         persistentVolumeClaim:
-          claimName: drivetester
+          claimName: myopenshiftblog
