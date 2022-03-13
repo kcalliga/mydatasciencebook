@@ -22,7 +22,7 @@ spec:
     protocol: TCP
     targetPort: 2368
   selector:
-    app: drivetester
+    app: myopenshiftblog
     deploymentconfig: myopenshiftblog
   sessionAffinity: None
   type: ClusterIP
