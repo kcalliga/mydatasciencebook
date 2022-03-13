@@ -1,8 +1,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: drivetester
-  namespace: drivetester
+  name: myopenshiftblog
+  namespace: myopenshiftblog
   finalizers:
     - kubernetes.io/pvc-protection
 spec:
