@@ -6,6 +6,6 @@ resources:
   - 00-namespace.yaml
   - 01-deployment.yaml
   - 02-service.yaml
-  - 03-drivetester-route.yaml
-  - 04-www-drivetester-route.yaml
+  - 03-myopenshiftblog-route.yaml
+  - 04-www-myopenshiftblog-route.yaml
   - 05-pvc.yaml
