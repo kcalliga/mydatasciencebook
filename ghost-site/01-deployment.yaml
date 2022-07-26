@@ -37,7 +37,7 @@ spec:
           value: https://myopenshiftblog.com
         image: ghost@sha256:b76e17a04c89d501f391c9f9b83ec645ed9b0423ddf0a9999085f16d88ffc8cd
         imagePullPolicy: Always
-        name: drivetester
+        name: myopenshiftblog
         ports:
         - containerPort: 2368
           protocol: TCP
