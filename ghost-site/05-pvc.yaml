@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: myopenshiftblog
+  name: myopenshiftblog-content
   namespace: myopenshiftblog
   finalizers:
     - kubernetes.io/pvc-protection
@@ -10,6 +10,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Gi
-  storageClassName: lso
+      storage: 20Gi
+  storageClassName: 
   volumeMode: Filesystem
