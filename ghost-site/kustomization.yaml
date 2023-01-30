@@ -9,3 +9,4 @@ resources:
   - 03-myopenshiftblog-route.yaml
   - 04-www-myopenshiftblog-route.yaml
   - 05-pvc-content.yaml
+  - 06-pvc-db.yaml
