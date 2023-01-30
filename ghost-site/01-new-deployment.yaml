@@ -32,21 +32,9 @@ spec:
         deploymentconfig: myopenshiftblog
     spec:
       containers:
-      - env:
-        - name: url
-          value: https://myopenshiftblog.com
-        - name: database__client
-          value: mysql
-        - name: database__connection__database
-          value: myopenshiftblog
-        - name: database__connection__host
-          value: localhost
-        - name: database__connection__password
-          value: <redacted>
-        - name: database__connection__user
-          value: root
-        - name: url
-          value: https://myopenshiftblog.com
+      - envFrom:
+        - secretRef:
+            name: ghost-content-env
         image: docker.io/ghost:5.25
         imagePullPolicy: Always
         name: myopenshiftblog
@@ -59,9 +47,9 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/ghost/content
           name: myopenshiftblog-content
-      - env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: <redacted>
+      - envFrom:
+        - secretRef:
+            name: ghost-db-env
         image: mysql:8.0
         name: db
         volumeMounts:
