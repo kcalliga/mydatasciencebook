@@ -34,7 +34,7 @@ spec:
       containers:
       - envFrom:
         - secretRef:
-            name: ghost-content-env
+            name: myopenshiftblog-content-env
         image: docker.io/ghost:5.25
         imagePullPolicy: Always
         name: myopenshiftblog
@@ -49,7 +49,7 @@ spec:
           name: myopenshiftblog-content
       - envFrom:
         - secretRef:
-            name: ghost-db-env
+            name: myopenshiftblog-db-env
         image: mysql:8.0
         name: db
         volumeMounts:
