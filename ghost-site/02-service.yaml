@@ -3,14 +3,14 @@ kind: Service
 metadata:
   annotations:
   labels:
-    app: myopenshiftblog
-    app.kubernetes.io/component: myopenshiftblog
-    app.kubernetes.io/instance: myopenshiftblog
-    app.kubernetes.io/name: myopenshiftblog
-    app.kubernetes.io/part-of: myopenshiftblog
+    app: mydatasciencebook
+    app.kubernetes.io/component: mydatasciencebook
+    app.kubernetes.io/instance: mydatasciencebook
+    app.kubernetes.io/name: mydatasciencebook
+    app.kubernetes.io/part-of: mydatasciencebook
     app.openshift.io/runtime-version: latest
-  name: myopenshiftblog
-  namespace: myopenshiftblog
+  name: mydatasciencebook
+  namespace: mydatasciencebook
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -22,8 +22,8 @@ spec:
     protocol: TCP
     targetPort: 2368
   selector:
-    app: myopenshiftblog
-    deploymentconfig: myopenshiftblog
+    app: mydatasciencebook
+    deploymentconfig: mydatasciencebook
   sessionAffinity: None
   type: ClusterIP
 status:
