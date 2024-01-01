@@ -6,7 +6,7 @@ resources:
   - 00-namespace.yaml
   - 01-new-deployment.yaml
   - 02-service.yaml
-  - 03-myopenshiftblog-route.yaml
-  - 04-www-myopenshiftblog-route.yaml
+  - 03-mydatasciencebook-route.yaml
+  - 04-www-mydatasciencebook-route.yaml
   - 05-pvc-content.yaml
   - 06-pvc-db.yaml
