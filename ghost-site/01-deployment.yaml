@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: myopenshiftblog
-    app.kubernetes.io/component: myopenshiftblog
-    app.kubernetes.io/instance: myopenshiftblog
-    app.kubernetes.io/name: myopenshiftblog
-    app.kubernetes.io/part-of: myopenshiftblog
-    app.openshift.io/runtime-namespace: myopenshiftblog
-  name: myopenshiftblog
-  namespace: myopenshiftblog
+    app: mydatasciencebook
+    app.kubernetes.io/component: mydatasciencebook
+    app.kubernetes.io/instance: mydatasciencebook
+    app.kubernetes.io/name: mydatasciencebook
+    app.kubernetes.io/part-of: mydatasciencebook
+    app.openshift.io/runtime-namespace: mydatasciencebook
+  name: mydatasciencebook
+  namespace: mydatasciencebook
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: myopenshiftblog
+      app: mydatasciencebook
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -28,16 +28,16 @@ spec:
         openshift.io/generated-by: OpenShiftWebConsole
       creationTimestamp: null
       labels:
-        app: myopenshiftblog
-        deploymentconfig: myopenshiftblog
+        app: mydatasciencebook
+        deploymentconfig: mydatasciencebook
     spec:
       containers:
       - env:
         - name: url
-          value: https://myopenshiftblog.com
-        image: ghost@sha256:b76e17a04c89d501f391c9f9b83ec645ed9b0423ddf0a9999085f16d88ffc8cd
+          value: https://mydatasciencebook.com
+        image: ghost:5.75
         imagePullPolicy: Always
-        name: myopenshiftblog
+        name: mydatasciencebook
         ports:
         - containerPort: 2368
           protocol: TCP
@@ -53,6 +53,6 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: myopenshiftblog
+      - name: mydatasciencebook
         persistentVolumeClaim:
-          claimName: myopenshiftblog
+          claimName: mydatasciencebook
