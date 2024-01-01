@@ -1,8 +1,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: myopenshiftblog-db
-  namespace: myopenshiftblog
+  name: mydatasciencebook-db
+  namespace: mydatasciencebook
   finalizers:
     - kubernetes.io/pvc-protection
 spec:
