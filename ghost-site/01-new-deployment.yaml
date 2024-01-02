@@ -35,7 +35,7 @@ spec:
       - envFrom:
         - secretRef:
             name: mydatasciencebook-content-env
-        image: docker.io/ghost:5.75
+        image: solidnerd/bookstack:22.04
         imagePullPolicy: Always
         name: mydatasciencebook
         ports:
@@ -45,12 +45,12 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /var/lib/ghost/content
+        - mountPath: /var/www/bookstack
           name: mydatasciencebook-content
       - envFrom:
         - secretRef:
             name: mydatasciencebook-db-env
-        image: mysql:8.0
+        image: mysql:5.7.21
         name: db
         volumeMounts:
         - mountPath: /var/lib/mysql
