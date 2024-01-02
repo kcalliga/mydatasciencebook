@@ -36,7 +36,7 @@ spec:
       containers:
       - envFrom:
         - secretRef:
-            name: mydatasciencebook-content-env
+            name: mydatasciencebook-content
         image: ghcr.io/requarks/wiki:2
         imagePullPolicy: Always
         name: mydatasciencebook
