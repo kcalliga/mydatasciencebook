@@ -13,7 +13,7 @@ metadata:
 spec:
   host: mydatasciencebook.com
   port:
-    targetPort: 2368-tcp
+    targetPort: 8080-tcp
   to:
     kind: Service
     name: mydatasciencebook
