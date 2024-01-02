@@ -37,22 +37,19 @@ spec:
       - envFrom:
         - secretRef:
             name: mydatasciencebook-content-env
-        image: solidnerd/bookstack:22.04
+        image: ghcr.io/requarks/wiki:2
         imagePullPolicy: Always
         name: mydatasciencebook
         ports:
-        - containerPort: 2368
+        - containerPort: 3000
           protocol: TCP
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /var/www/bookstack
-          name: mydatasciencebook-content
       - envFrom:
         - secretRef:
             name: mydatasciencebook-db-env
-        image: mysql:5.7.21
+        image: postgres:15-alpine
         name: db
         volumeMounts:
         - mountPath: /var/lib/mysql
@@ -63,9 +60,6 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: mydatasciencebook-content
-        persistentVolumeClaim:
-          claimName: mydatasciencebook-content
       - name: mydatasciencebook-db
         persistentVolumeClaim:
           claimName: mydatasciencebook-db
