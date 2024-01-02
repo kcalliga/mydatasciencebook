@@ -31,6 +31,8 @@ spec:
         app: mydatasciencebook
         deploymentconfig: mydatasciencebook
     spec:
+      serviceAccountName: bookstack
+      serviceAccount: bookstack
       containers:
       - envFrom:
         - secretRef:
