@@ -1,0 +1,196 @@
+<!--
+title: Cookbook Stuff
+description: Cookbook stuff
+published: true
+date: 2024-01-03T21:08:43.999Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-03T20:48:43.120Z
+-->
+
+<!--
+title: Cookbook Stuff
+description: Cookbook stuff
+published: true
+date: 2024-01-03T19:19:39.963Z
+tags:
+editor: undefined
+dateCreated: 2024-01-02T18:57:29.766Z
+-->
+
+<h1>Accuracy Score</h1>
+<pre><code class="language-plaintext">from sklearn.metrics import accuracy_score
+accuracy_score(y_train, pred_train)</code></pre>
+<h1>Change DataType</h1>
+<pre><code class="language-plaintext">data["$feature"] = data["$feature"].astype("category")</code></pre>
+<h1>Create dataframe</h1>
+<pre><code class="language-plaintext">dfvalues = [[$value1, $value2, $value3], [$value1, $value2, $value3]]
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dfcolumns = [‘$feature1’, ‘$feature2’. ‘$feature3’]
+data = pd.DataFrame( data=dfvalues, columns=dfcolumns)</code></pre>
+<h1>Confusion Matrix</h1>
+<pre><code class="language-plaintext">from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_train, pred_train)
+plt.figure(figsize=(7,5))
+sns.heatmap(cm, annot=True, fmt="g")
+plt.xlabel("Predicted Values")
+plt.ylabel("Actual Values")</code></pre>
+<h1>Decision Tree (Default)</h1>
+<pre><code class="language-plaintext">from sklearn.tree import DecisionTreeClassifier
+dtree = DecisionTreeClassifier(random_state=1, max_depth=4)
+dtree.fit(X_train, y_train)
+# Predict part
+pred_train = dtree.predict(X_train)
+pred_test = dtree.predict(X_test)</code></pre>
+<h1>Drop/Delete Data</h1>
+<pre><code class="language-plaintext">data.drop(columns=[‘$feature1’, ‘$feature2’], inplace=True)</code></pre>
+<h1>Feature Importances</h1>
+<pre><code class="language-plaintext">print(pd.DataFrame(dtree.feature_importances_, columns = ["imp"],
+        index = X_train.columns))</code></pre>
+<h1>Filter/Query</h1>
+<pre><code class="language-plaintext">data.query(‘$feature == “SOMEVALUE”’’)</code></pre>
+<h1>Imputation</h1>
+<pre><code class="language-plaintext">from sklearn.impute import SimpleImputer
+imp_median = SimpleImputer(missing_values=np.nan, strategy="median")
+data["$feature"] = imp_median.fit_transform(data[["$feature"]])</code></pre>
+<h1>Load Data</h1>
+<h2>CSV</h2>
+<pre><code class="language-plaintext">data = pd.read_csv(“filename.csv”)</code></pre>
+<h1>OneHotEncoding</h1>
+<pre><code class="language-plaintext">X = pd.get_dummies(X, drop_first=True)</code></pre>
+<h1>OverSampling/SMOTE</h1>
+<pre><code class="language-plaintext">from imblearn.over_sampling import SMOTE
+# 0.4 means that in the end, the minority class will be increased to be 40% as compared
+# to majority class
+sm = SMOTE(sampling_strategy=0.4, k_neighbors=5, random_state=1)
+X_train_over, y_train_over = sm.fit_resample(X_train, y_train)
+# Count of new balancing
+# Negative Class
+sum(y_train_over == 0)
+# Positive Class
+sum(y_train_over == 1)</code></pre>
+<h1>RandomForestClassifier</h1>
+<pre><code class="language-plaintext">from sklearn.ensemble import RandomForestClassifier
+rf = RandomForestClassifier(random_state=1)
+rf.fit(X_train, y_train)
+# Get RandomForest Parameters that were used by default
+RandomForestClassifier().get_params_
+#Predict
+model = rf
+model.predict(X_test)</code></pre>
+<h1>RandomForestClassifier with GridSearch</h1>
+<pre><code class="language-plaintext">from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+rf = RandomForestClassifier(random_state=1)
+parameters = {"n_estimators": [150,200,250],
+        "min_samples_leaf": np.arange(5,10),
+        "max_features": np.arange(0.2, 0.7, 0.1),
+        "class_weight": ['balanced', 'balanced_subsample'],
+        "max_depth": np.arange(3,4,5),
+        "min_impurity_decrease":[0.001, 0.002, 0.003]
+        }
+# add scorer
+acc_scorer - metrics.make_scorer(metrics.recall_score)
+
+# Run grid search
+grid_obj = GridSearchCV(rf, parameters, scoring=acc_scorer, cv=5, n_jobs= -1, verbose = 2)
+# Fit the grid search
+grid_obj = grid_obj.fit(X_train, y_train)
+# Print best params
+grid_obj.best_params_
+# Get best score
+grid_obj.best_score_
+
+# Now set up model to use best paramaters based on output from best_params above
+
+rf_tuned = RandomForestClassifier(
+        class_weight="balanced",
+        max_features=0.2,
+        max_samples=0.6000,
+        min_samples_leaf=5,
+        n_estimators=150,
+        max_depth=3,
+        random_state=1,
+        min_impurity_decrease=0.001,
+        )
+# Fit the best algorithm to the data
+rf_tuned.fit(X_train, y_train)
+#Predict
+model = rf
+model.predict(X_test)</code></pre>
+<h1>RandomForestClassifier with RandomizedSearch</h1>
+<pre><code class="language-plaintext">from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import RandomizedSearchCV
+rf = RandomForestClassifier(random_state=1)
+parameters = {"n_estimators": [150,200,250],
+        "min_samples_leaf": np.arange(5,10),
+        "max_features": np.arange(0.2, 0.7, 0.1),
+        "class_weight": ['balanced', 'balanced_subsample'],
+        "max_depth": np.arange(3,4,5),
+        "min_impurity_decrease":[0.001, 0.002, 0.003]
+        }
+# add scorer
+acc_scorer - metrics.make_scorer(metrics.recall_score)
+
+# Run grid search
+grid_obj = RandomizedSearchCV(rf, parameters, n_iter=30, scoring=acc_scorer, cv=5, n_jobs= -1, verbose = 2)
+# Fit the grid search
+grid_obj = grid_obj.fit(X_train, y_train)
+# Print best params
+grid_obj.best_params_
+# Get best score
+grid_obj.best_score_
+
+# Now set up model to use best paramaters based on output from best_params above
+
+rf_tuned = RandomForestClassifier(
+        class_weight="balanced",
+        max_features=0.2,
+        max_samples=0.6000,
+        min_samples_leaf=5,
+        n_estimators=150,
+        max_depth=3,
+        random_state=1,
+        min_impurity_decrease=0.001,
+        )
+# Fit the best algorithm to the data
+rf_tuned.fit(X_train, y_train)
+#Predict
+model = rf
+model.predict(X_test)</code></pre>
+<h1>Recall Score</h1>
+<pre><code class="language-plaintext">from sklearn.metrics import recall_score
+recall_score(y_train, pred_train)</code></pre>
+<h1>Rename</h1>
+<pre><code class="language-plaintext">data.rename(columns={‘$oldfeature1name’: ‘$newfeature1name’,
+        ‘$oldfeature2name’: ‘$newfeature2name’})</code></pre>
+<h1>Scoring</h1>
+<pre><code class="language-plaintext">from sklearn.metrics import make_scorer
+# Make scorer
+acc_scorer = metrics.make_scorer(metrics.recall_score)</code></pre>
+<h1>Slice</h1>
+<pre><code class="language-plaintext">data.loc[0:100:10, ‘$featurestart’: ‘$featureend’]’ </code></pre>
+<h1>Sort</h1>
+<pre><code class="language-plaintext">data.sort_values(‘$feature’)
+data.sort_values([‘$feature1’, ‘$feature2’], ascending=False, inplace=True)</code></pre>
+<h1>Train-Test Split</h1>
+<pre><code class="language-plaintext">from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y test_size=0.3, random_state=0,
+        stratify=y
+)</code></pre>
+<h1>UnderSampling/RandomUnderSampler</h1>
+<pre><code class="language-plaintext">from imblearn.under_sampling import RandomUnderSampler
+rus = RandomUnderSampler(random_state=1, sampling_strategy=1)
+# New Values have taken less samples of majority class so there is one-to-one ratio
+# between those classes
+X_train_un, y_train_un = rus.fit_resample(X_train, y_train)</code></pre>
+<h1>Unique Values</h1>
+<pre><code class="language-plaintext">data.nunique() </code></pre>
+<h1>Viewing Data</h1>
+<pre><code class="language-plaintext"># View top rows (5 by default)
+data,head()
+# View bottom rows (5 by default)
+data.tail()
+data.info()
+data.describe()
+data.describe().T
+data[[‘$feature1’, ‘$feature2’]]</code></pre>

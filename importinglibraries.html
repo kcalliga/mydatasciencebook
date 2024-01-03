@@ -1,0 +1,109 @@
+<!--
+title: Importing Libraries
+description: Importing libraries
+published: true
+date: 2024-01-03T21:10:06.721Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-03T20:52:49.403Z
+-->
+
+<!--
+title: Importing Libraries
+description: Importing libraries
+published: true
+date: 2024-01-02T19:36:53.351Z
+tags:
+editor: undefined
+dateCreated: 2024-01-02T19:36:52.231Z
+-->
+
+<pre><code class="language-plaintext"># Libraries to help with reading and manipulating data
+import numpy as np
+import pandas as pd
+# Libraries to help with data visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
+# Removes the limit for the number of displayed columns
+pd.set_option("display.max_columns", None)
+# Sets the limit for the number of displayed rows
+pd.set_option("display.max_rows", 200)
+# to split the data into train and test
+from sklearn.model_selection import train_test_split
+# to build linear regression_model
+from sklearn.linear_model import LinearRegression
+# to check model performance
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+# To get diferent metric scores
+from sklearn.metrics import (
+ &nbsp;&nbsp;&nbsp;f1_score,
+ &nbsp;&nbsp;&nbsp;accuracy_score,
+ &nbsp;&nbsp;&nbsp;recall_score,
+ &nbsp;&nbsp;&nbsp;precision_score,
+ &nbsp;&nbsp;&nbsp;confusion_matrix,
+ &nbsp;&nbsp;&nbsp;ConfusionMatrixDisplay,
+ &nbsp;&nbsp;&nbsp;make_scorer,
+)
+# Libraries to build decision tree classifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
+# To tune different models
+from sklearn.model_selection import GridSearchCV
+# To perform statistical analysis
+import scipy.stats as stats
+# To build model for prediction
+import statsmodels.stats.api as sms
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+import statsmodels.api as sm
+from statsmodels.tools.tools import add_constant
+from sklearn.linear_model import LogisticRegression
+# To tune different models
+from sklearn.model_selection import GridSearchCV
+# to scale the data using z-score
+from sklearn.preprocessing import StandardScaler
+# to compute distances
+from scipy.spatial.distance import cdist
+# to perform k-means clustering and compute silhouette scores
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+# to visualize the elbow curve and silhouette scores
+from yellowbrick.cluster import KElbowVisualizer, SilhouetteVisualizer
+# to compute distances
+from scipy.spatial.distance import pdist
+# to perform hierarchical clustering, compute cophenetic correlation, and create dendrograms
+from sklearn.cluster import AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage, cophenet
+# Libraries to import decision tree classifier and different ensemble classifiers
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.impute import SimpleImputer
+# Libraries to import decision tree classifier and different ensemble classifiers
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
+from xgboost import XGBClassifier
+from sklearn.ensemble import StackingClassifier
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from xgboost import XGBClassifier
+from sklearn.metrics import (
+ &nbsp;&nbsp;&nbsp;f1_score,
+ &nbsp;&nbsp;&nbsp;accuracy_score,
+ &nbsp;&nbsp;&nbsp;recall_score,
+ &nbsp;&nbsp;&nbsp;precision_score,
+ &nbsp;&nbsp;&nbsp;confusion_matrix,
+ &nbsp;&nbsp;&nbsp;roc_auc_score,
+ &nbsp;&nbsp;&nbsp;ConfusionMatrixDisplay,
+)
+# To be used for data scaling and one hot encoding
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
+# To be used for tuning the model
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+# To oversample and undersample data
+from imblearn.over_sampling import SMOTE
+from
+
+imblearn.under_sampling
+
+import
+ RandomUnderSampler</code></pre>

@@ -1,0 +1,119 @@
+<!--
+title: What Type of Problem to Solve
+description: What type of problem to solve
+published: true
+date: 2024-01-03T21:19:19.365Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-01-03T21:03:43.842Z
+-->
+
+<h1>Linear Regression</h1>
+<p>A linear regression type of problem typically involves trying to determine a numeric variable (Y) based on a single feature or multiple features (X variables).</p>
+<p>Going back to the days of high school Algebra, there is the following formula</p>
+<pre><code class="language-plaintext">Y = Mx + B</code></pre>
+<p>M is the coefficient which gets multiplied by the single value of X and added to the Y intercept (B) to get the target variable, Y.</p>
+<p>Let's take a simple example with one feature (X variable) to determine Y.</p>
+<p>This example is used &nbsp;a lot but I think it is very easy to understand.</p>
+<p>Let's say multiple students take a test and we would like to estimate based on the total hours of study, the score that a student would get on the test.</p>
+<p>On the Y-axis, I will plot the Y intercept which is the test score that one would get if they didn't study at all (X is 0 hours). &nbsp;70% will be used in this example.</p>
+<p>This is essentially making the coefficient (M) zero which means that Y is equal to 70 which is also the Y intercept (B).</p>
+<pre><code class="language-plaintext">Y = (0)x + B
+70 = 0 + 70</code></pre>
+<p>Since the Y-intercept (B) is 70, this is the point on the Y axis, when X (hours of study) is 0.</p>
+<figure class="image"><img src="/yintercept70.png"></figure>
+<p>To continue with this simple example, let's add an additional point to this graph. &nbsp;This point will be the second test-taker. &nbsp;Let's say that this student studied six hours and received a score of 80%.</p>
+<p>The coefficient in this case will be the slope (rise over run) which gets multiplied by the value of X (6). &nbsp;The rise is the difference between the 70 received when studying 0 hours and 80 &nbsp;which are both on the Y axis (10). &nbsp;The run is the difference between 0 on the X-axis and 6 which is the hours of study (6). &nbsp;Y would be 80 which is the score the test-taker would get based on this.</p>
+<p>Here is the breakdown</p>
+<pre><code class="language-plaintext">Y = (10/6)x + 70
+Y = (10/6 * 6) + 70
+Y = (1 ⅔ * 6) + 70
+80 = 10 + 70</code></pre>
+<p>Let's take this example and use it within a Jupyter Notebook.</p>
+<p>A CSV file has been created for this purpose and looks as follows</p>
+<figure class="image"><img src="/linearregression1.png"></figure>
+<p>This file can be downloaded from&nbsp;</p>
+<p><a href="https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/Example1.csv">https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/Example1.csv</a></p>
+<pre><code class="language-plaintext">import numpy as np
+import pandas as pd
+# Import libraries to do linear regression
+from sklearn.linear_model import LinearRegression
+# Read CSV file as dataframe called data
+data = pd.read_csv("Example1.csv")
+# View the rows and columns
+data
+# Linear regression requires 2D data for X variables so making up one
+data["New_Column"] = [0, 0]
+# Split data into X and Y
+X = data.drop("TestScore", axis=1)
+y = data["TestScore"]
+# Create the regression model to solve this
+model = LinearRegression().fit(X, y)</code></pre>
+<p>Here is the code loaded into Google Colab/Jupyter Notebook.</p>
+<figure class="image"><img src="/linearregression3.png"></figure>
+<p>From the manual calculations we have performed thus far, we know that the formula to solve this simple linear regression problem is Y = 1 ⅔ (X) + 70. &nbsp;</p>
+<p>Let's look at the coefficient that is figured out from Python</p>
+<pre><code class="language-plaintext">model.coef_</code></pre>
+<p>&nbsp;</p>
+<figure class="image"><img src="/linearregression4.png"></figure>
+<p>The next CSV file will only contain the X variables that were used in the fit that was run earlier. &nbsp;The NewColumn contains all zeros but it's purpose was only to make the X data 2-D which is required by the LinearRegression model. &nbsp;The values in the New_Column field are all zeros so they add no value.</p>
+<figure class="image"><img src="/linearregression7.png"></figure>
+<p>This file can be downloaded from</p>
+<p><a href="https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2">https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2</a></p>
+<p>Let's now use the model that was built to do a prediction on the data above</p>
+<pre><code class="language-plaintext">X_new = pd.read_csv("Example2.csv")
+model.predict(X_new)</code></pre>
+<p>Here are the results of this prediction</p>
+<figure class="image"><img src="/linearregression6.png"></figure>
+<p>If we match up the hours of study with the predictions here, this is how it would look</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td>HoursofStudy</td>
+        <td>TestScore</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>73.33</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>75</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>76.6667</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>78.333</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>81.6667</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>83.3333</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>85</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>86.667</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>As you can see, the prediction for 6 hours of study lines up with the original data that we had which showed the test-taker received a score of 80%. &nbsp;Based on the limited information in this dataset, these predictions would not be used in the real-world since there was only two results in the original data that was used for training which only showed the person that studied 0 hours and received 70% score and then the 6 hours of study for the 80% score.</p>
+<h1>Logistic Regression</h1>
+<h1>Classification</h1>
+<h2>Multi-Classification</h2>
+<h1>Clustering</h1>
