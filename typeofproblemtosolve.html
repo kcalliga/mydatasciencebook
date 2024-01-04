@@ -2,7 +2,7 @@
 title: What Type of Problem to Solve
 description: What type of problem to solve
 published: true
-date: 2024-01-04T17:14:58.949Z
+date: 2024-01-04T18:29:24.906Z
 tags: 
 editor: ckeditor
 dateCreated: 2024-01-03T21:03:43.842Z
@@ -33,7 +33,7 @@ Y = (1 ⅔ * 6) + 70
 <p>A CSV file has been created for this purpose and looks as follows</p>
 <figure class="image"><img src="/linearregression1.png"></figure>
 <p>This file can be downloaded from&nbsp;</p>
-<p><a href="https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/Example1.csv">https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/Example1.csv</a></p>
+<p><a href="https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/LinearRegression1.csv">https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/LinearRegression1,csv</a></p>
 <pre><code class="language-plaintext">import numpy as np
 import pandas as pd
 # Import libraries to do linear regression
@@ -59,7 +59,7 @@ model = LinearRegression().fit(X, y)</code></pre>
 <p>The next CSV file will only contain the X variables that were used in the fit that was run earlier. &nbsp;The NewColumn contains all zeros but it's purpose was only to make the X data 2-D which is required by the LinearRegression model. &nbsp;The values in the New_Column field are all zeros so they add no value.</p>
 <figure class="image"><img src="/linearregression7.png"></figure>
 <p>This file can be downloaded from</p>
-<p><a href="https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2">https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2</a></p>
+<p><a href="https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2/LinearRegression2.csv">https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2/LinearRegression2.csv</a></p>
 <p>Let's now use the model that was built to do a prediction on the data above</p>
 <pre><code class="language-plaintext">X_new = pd.read_csv("Example2.csv")
 model.predict(X_new)</code></pre>
