@@ -2,7 +2,7 @@
 title: What Type of Problem to Solve
 description: What type of problem to solve
 published: true
-date: 2024-01-04T18:29:24.906Z
+date: 2024-01-04T18:43:55.653Z
 tags: 
 editor: ckeditor
 dateCreated: 2024-01-03T21:03:43.842Z
@@ -34,10 +34,13 @@ Y = (1 ⅔ * 6) + 70
 <figure class="image"><img src="/linearregression1.png"></figure>
 <p>This file can be downloaded from&nbsp;</p>
 <p><a href="https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/LinearRegression1.csv">https://github.com/kcalliga/mydatasciencebook/blob/main/Chapter2/LinearRegression1,csv</a></p>
+<p>Here is the code</p>
 <pre><code class="language-plaintext">import numpy as np
 import pandas as pd
 # Import libraries to do linear regression
 from sklearn.linear_model import LinearRegression
+# Import Pyplot for plotting
+import matplotlib.pyplot as plt
 # Read CSV file as dataframe called data
 data = pd.read_csv("Example1.csv")
 # View the rows and columns
@@ -47,10 +50,16 @@ data["New_Column"] = [0, 0]
 # Split data into X and Y
 X = data.drop("TestScore", axis=1)
 y = data["TestScore"]
+# Show Line Plot
+plt.plot(X, y)
+plt.show()
 # Create the regression model to solve this
 model = LinearRegression().fit(X, y)</code></pre>
 <p>Here is the code loaded into Google Colab/Jupyter Notebook.</p>
 <figure class="image"><img src="/linearregression3.png"></figure>
+<figure class="image"><img src="/linearregression9.png">
+  <figcaption>Line Plot Showing Linear Relationship</figcaption>
+</figure>
 <p>From the manual calculations we have performed thus far, we know that the formula to solve this simple linear regression problem is Y = 1 ⅔ (X) + 70. &nbsp;</p>
 <p>Let's look at the coefficient that is figured out from Python</p>
 <pre><code class="language-plaintext">model.coef_</code></pre>
