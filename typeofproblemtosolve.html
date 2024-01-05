@@ -2,7 +2,7 @@
 title: What Type of Problem to Solve
 description: What type of problem to solve
 published: true
-date: 2024-01-05T01:57:07.851Z
+date: 2024-01-05T14:13:14.864Z
 tags: 
 editor: ckeditor
 dateCreated: 2024-01-03T21:03:43.842Z
@@ -46,7 +46,7 @@ from sklearn.linear_model import LinearRegression
 # Import Pyplot for plotting
 import matplotlib.pyplot as plt
 # Read CSV file as dataframe called data
-data = pd.read_csv("Example1.csv")
+data = pd.read_csv("Linear1.csv")
 # View the rows and columns
 data
 # Linear regression requires 2D data for X variables so making up one
@@ -74,7 +74,7 @@ model = LinearRegression().fit(X, y)</code></pre>
 <p>This file can be downloaded from</p>
 <p><a href="https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2/LinearRegression2.csv">https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2/LinearRegression2.csv</a></p>
 <p>Let's now use the model that was built to do a prediction on the data above</p>
-<pre><code class="language-plaintext">X_new = pd.read_csv("Example2.csv")
+<pre><code class="language-plaintext">X_new = pd.read_csv("Linear2.csv")
 model.predict(X_new)</code></pre>
 <p>Here are the results of this prediction</p>
 <figure class="image"><img src="/linearregression6.png"></figure>
