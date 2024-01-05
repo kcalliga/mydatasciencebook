@@ -2,7 +2,7 @@
 title: What Type of Problem to Solve
 description: What type of problem to solve
 published: true
-date: 2024-01-05T14:35:23.739Z
+date: 2024-01-05T14:54:39.571Z
 tags: 
 editor: ckeditor
 dateCreated: 2024-01-03T21:03:43.842Z
@@ -49,8 +49,6 @@ import matplotlib.pyplot as plt
 data = pd.read_csv("Linear1.csv")
 # View the rows and columns
 data
-# Add new column so X will be 2-dimensional.  This is needed for linear regression model.  Since new column is all zeros
-# there it doesn't change the computation.
 # Split data into X and Y
 X = data.drop("TestScore", axis=1)
 y = data["TestScore"]
@@ -58,17 +56,18 @@ y = data["TestScore"]
 plt.plot(X, y)
 plt.show()
 # Create the regression model to solve this
+# Create the regression model to solve this
 model = LinearRegression().fit(X, y)</code></pre>
-<p>Here is the code loaded into Google Colab/Jupyter Notebook.</p>
 <p>&nbsp;</p>
+<p>The following diagram shows the line plot for these two points.</p>
 <figure class="image"><img src="/linearregression9.png">
   <figcaption>Line Plot Showing Linear Relationship</figcaption>
 </figure>
 <p>From the manual calculations we have performed thus far, we know that the formula to solve this simple linear regression problem is Y = 1 ⅔ (X) + 70. &nbsp;</p>
-<p>Let's look at the coefficient that is figured out from Python</p>
-<pre><code class="language-plaintext">model.coef_</code></pre>
+<p>Let's look at the coefficient that is figured out from Python and the intercept.</p>
+<pre><code class="language-plaintext">model.coef_
+model_intercept_</code></pre>
 <p>&nbsp;</p>
-<figure class="image"><img src="/linearregression4.png"></figure>
 <p>The next CSV file will only contain the X variables that were used in the fit that was run earlier. &nbsp;The NewColumn contains all zeros but it's purpose was only to make the X data 2-D which is required by the LinearRegression model. &nbsp;The values in the New_Column field are all zeros so they add no value.</p>
 <p>&nbsp;</p>
 <p>This file can be downloaded from</p>
