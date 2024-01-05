@@ -2,7 +2,7 @@
 title: What Type of Problem to Solve
 description: What type of problem to solve
 published: true
-date: 2024-01-05T14:13:14.864Z
+date: 2024-01-05T14:35:23.739Z
 tags: 
 editor: ckeditor
 dateCreated: 2024-01-03T21:03:43.842Z
@@ -49,8 +49,8 @@ import matplotlib.pyplot as plt
 data = pd.read_csv("Linear1.csv")
 # View the rows and columns
 data
-# Linear regression requires 2D data for X variables so making up one
-data["New_Column"] = [0, 0]
+# Add new column so X will be 2-dimensional.  This is needed for linear regression model.  Since new column is all zeros
+# there it doesn't change the computation.
 # Split data into X and Y
 X = data.drop("TestScore", axis=1)
 y = data["TestScore"]
@@ -60,7 +60,7 @@ plt.show()
 # Create the regression model to solve this
 model = LinearRegression().fit(X, y)</code></pre>
 <p>Here is the code loaded into Google Colab/Jupyter Notebook.</p>
-<figure class="image"><img src="/linearregression3.png"></figure>
+<p>&nbsp;</p>
 <figure class="image"><img src="/linearregression9.png">
   <figcaption>Line Plot Showing Linear Relationship</figcaption>
 </figure>
@@ -70,14 +70,14 @@ model = LinearRegression().fit(X, y)</code></pre>
 <p>&nbsp;</p>
 <figure class="image"><img src="/linearregression4.png"></figure>
 <p>The next CSV file will only contain the X variables that were used in the fit that was run earlier. &nbsp;The NewColumn contains all zeros but it's purpose was only to make the X data 2-D which is required by the LinearRegression model. &nbsp;The values in the New_Column field are all zeros so they add no value.</p>
-<figure class="image"><img src="/linearregression7.png"></figure>
+<p>&nbsp;</p>
 <p>This file can be downloaded from</p>
 <p><a href="https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2/LinearRegression2.csv">https://github.com/kcalliga/mydatasciencebook/tree/main/Chapter2/LinearRegression2.csv</a></p>
 <p>Let's now use the model that was built to do a prediction on the data above</p>
 <pre><code class="language-plaintext">X_new = pd.read_csv("Linear2.csv")
 model.predict(X_new)</code></pre>
 <p>Here are the results of this prediction</p>
-<figure class="image"><img src="/linearregression6.png"></figure>
+<p>&nbsp;</p>
 <p>If we match up the hours of study with the predictions here, this is how it would look</p>
 <figure class="table">
   <table>
@@ -127,7 +127,7 @@ model.predict(X_new)</code></pre>
 </figure>
 <p>As you can see, the prediction for 6 hours of study lines up with the original data that we had which showed the test-taker received a score of 80%. &nbsp;Based on the limited information in this dataset, these predictions would not be used in the real-world since there was only two results in the original data that was used for training which only showed the person that studied 0 hours and received 70% score and then the 6 hours of study for the 80% score.</p>
 <h3>Multi-Dimensional</h3>
-<p>Let's add another X variable to our dataset. &nbsp;This variable will be hours of sleep on the night before the test. &nbsp;The idea is that less than 8 hours of sleep will contribute to a negative impact on the test-score and will have the opposite effect that study hours has (increased test-score).</p>
+<p>Let's add another X variable to our dataset. &nbsp;This variable will be hours of sleep on the night before the test. &nbsp;The idea is that less than 8 hours of sleep will contribute to a negative impact on the test-score and will have the opposite effect that study hours has.</p>
 <p>&nbsp;</p>
 <h2>Polynomial Regression</h2>
 <p>The full-code for this exercise is located at</p>
